@@ -62,6 +62,7 @@ $colours-map: (
 
 
 /*-----scope-----*/
+$immutable_var: black !default;
 $global_var: red;
 .end-text{
   //$global_var: blue;
