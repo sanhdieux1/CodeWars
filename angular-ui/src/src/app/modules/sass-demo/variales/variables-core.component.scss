@@ -1,0 +1,74 @@
+$main-font: 20px bold tahoma;
+$main-color: rgb(255,0,0);
+$no-value: null;
+
+.title{
+  font: $main-font;
+  font-size: nth($main-font, 1);
+  color: $main-color;
+  margin: 10px $no-value;
+}
+@for $i from 1 through 5{
+  .circle-#{$i}{
+    background-color: rgba($main-color, $i/10);
+  }
+}
+
+/*--------List---------*/
+
+
+$colours: rgb(255,255,255), // white
+          rgb(255,0,0),     // red
+          rgb(135,206,250), // sky blue
+          rgb(255,255,0),   // yellow
+          rgb(0,125,0);   // green
+
+.square-1{
+  background-color: nth($colours, 1);
+}
+.square-2{
+  background-color: nth($colours, 2);
+}
+.square-3{
+  background-color: nth($colours, 3);
+}
+.square-4{
+  background-color: nth($colours, 4);
+}
+.square-5{
+  background-color: nth($colours, 5);
+}
+@each $colour in $colours{
+
+}
+
+/*-------Map--------*/
+$colours-map: (
+  'color-1': blue,
+  'color-2': yellow,
+  'color-3': tomato
+);
+
+.triangle-1{
+  border-bottom-color: map-get($colours-map, 'color-1');
+}
+.triangle-2{
+  border-bottom-color: map-get($colours-map, 'color-2');
+}
+.triangle-3{
+  border-bottom-color: map-get($colours-map, 'color-3');
+}
+
+
+
+/*-----scope-----*/
+$global_var: red;
+.end-text{
+  //$global_var: blue;
+  $global_var: blue !global;
+  color: $global_var;
+}
+
+hr{
+  border-color: $global_var;
+}

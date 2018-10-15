@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="main">
+    <div class="left-menu">
+      <app-left-menu></app-left-menu>
+    </div>
+    <div class="context-menu">
+      <div class="app-main">
+        <app-main [messages]="messages"></app-main>
+      </div>
+      <div class="app-user-input-box">
+        <app-user-input-box (onSendMessage)="onSendMessage($event)"></app-user-input-box>
+      </div>
+
+    </div>
+  </div>
+</div>

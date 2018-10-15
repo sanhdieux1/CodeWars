@@ -1,0 +1,24 @@
+$size: 50px;
+.circle {
+  border-radius: 50%;
+}
+.squares{
+  margin-top: 20px;
+}
+.square, .circle{
+  width: $size;
+  height: $size;
+  border: 1px solid #000000;
+  display: inline-block;
+  margin: 20px;
+}
+
+.triangle{
+  width: 0;
+  height: 0;
+  border-left: $size/2 solid transparent;
+  border-right: $size/2 solid transparent;
+  border-bottom: $size solid;
+  display: inline-block;
+  margin: 20px;
+}
