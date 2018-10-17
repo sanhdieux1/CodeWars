@@ -6,5 +6,5 @@ import {Component} from "@angular/core";
   styleUrls: ['sass-demo.component.scss', 'simple-sidebar.css']
 })
 export class SassDemoComponent {
-
+    currentTheme: string = '';
 }

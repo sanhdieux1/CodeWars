@@ -5,14 +5,19 @@ import {FormsModule} from "@angular/forms";
 import {SassDemoRoutingModule} from "./sass-demo.routing.module";
 import {SassDemoComponent} from "./sass-demo.component";
 import {VarialesComponent} from "./variales/variales.component";
+import {MixinsComponent} from "./mixins/mixins.component";
+import {DirectivesComponent} from "./directives/directives.component";
+import {SelectionPerformanceComponent} from "./selection-performance/selection-performance.component";
+import {NgSelectModule} from "@ng-select/ng-select";
 
 @NgModule({
   imports:[
     SassDemoRoutingModule,
     CommonModule,
     FormsModule,
-    WebsocketModule
+    WebsocketModule,
+      NgSelectModule
   ],
-  declarations: [SassDemoComponent, VarialesComponent]
+  declarations: [SassDemoComponent, VarialesComponent, MixinsComponent, DirectivesComponent, SelectionPerformanceComponent]
 })
 export class SassDemoModule{}

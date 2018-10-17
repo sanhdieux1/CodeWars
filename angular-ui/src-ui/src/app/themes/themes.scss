@@ -1,0 +1,25 @@
+$theme_default: (
+  text-back: #4db1ff,
+  text-lay: #f994a9,
+  text-danger: #b30000,
+  text-leftmenu: #fff,
+  bg-exchange: #3d60a4
+);
+
+$themes: (
+    fairexchange: (
+       $theme_default
+    ),
+    taj88: map_merge($theme_default, (
+       bg-exchange: #F7C300,
+       text-leftmenu: #fff
+    )),
+    satport: map_merge($theme_default, (
+        bg-exchange: #a74bc5,
+        text-leftmenu: #fff
+    )),
+    bodog:  map_merge($theme_default, (
+            bg-exchange: #fff,
+            text-leftmenu: #2489d5
+    ))
+);

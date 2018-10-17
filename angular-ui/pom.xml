@@ -65,7 +65,7 @@
                 </configuration>
             </plugin>
 
-            <plugin>
+            <!--<plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>1.5.0</version>
@@ -80,7 +80,7 @@
                 <configuration>
                     <mainClass>com.kail.generate.resource.GenerateColor</mainClass>
                 </configuration>
-            </plugin>
+            </plugin>-->
 
             <plugin>
                 <groupId>com.github.eirslett</groupId>

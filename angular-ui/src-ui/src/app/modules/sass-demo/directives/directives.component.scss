@@ -1,0 +1,77 @@
+@import "style-import.scss" screen and (max-width: 768px);
+
+$color : blue;
+button{
+  margin-left: 10px;
+}
+.my-selector {
+  @if $color == blue {
+    text-decoration: underline;
+  } @else {
+    font-weight: bold;
+  }
+}
+
+$buttonConfig: 'save' 150px #0069d9, 'cancel' 150px red, 'help' 100px rgb(19, 132, 150);
+@each $btn in $buttonConfig {
+  .button-#{nth($btn, 1)} {
+    width: nth($btn, 2);
+    background-color: nth($btn, 3);
+  }
+}
+
+//@each $name, $size, $clr in $buttonConfig {
+//  .button-#{$name} {
+//    width: $size;
+//    background-color: $clr;
+//  }
+//}
+
+@for $i from 1 to 5 {
+  .button-#{$i} {
+    width: $i * 40 + 50px;
+  }
+}
+
+$i: 8;
+@while $i > 0 {
+  .button-#{$i} {
+    border: 2px solid gray;
+  }
+  $i: $i - 2;
+}
+/*----------------------*/
+
+
+.error {
+  border: 1px #f00;
+  background-color: #fdd;
+}
+.seriousError {
+  @extend .error;
+  border-width: 3px;
+}
+.left-menu .dumpError{
+  @extend .error;
+}
+/*
+  .error, .seriousError{
+    border: 1px #f00;
+    background-color: #fdd;
+  }
+  .seriousError{
+    border-width: 3px;
+  }
+*/
+
+
+//.error:hover{
+//  font-weight: bold;
+//}
+
+.main-menu .error{
+  color: gold;
+}
+
+@debug 'day la debug: #{$color}';
+@warn "Assuming #{$color} to be in pixels";

@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid theme-{{currentTheme}}">
   <div class="row">
     <div class="col-auto left-menu">
       <div id="sidebar-wrapper">
@@ -12,27 +12,31 @@
             <a routerLink="/sass-demo/variables" routerLinkActive="active">Variables</a>
           </li>
           <li>
-            <a href="#">Shortcuts</a>
+            <a routerLink="/sass-demo/mixins" routerLinkActive="active">Mixins</a>
           </li>
           <li>
-            <a href="#">Overview</a>
+            <a routerLink="/sass-demo/directives" routerLinkActive="active">Directives</a>
           </li>
           <li>
-            <a href="#">Events</a>
+            <a routerLink="/sass-demo/selection" routerLinkActive="active">Selection</a>
           </li>
-          <li>
-            <a href="#">About</a>
-          </li>
-          <li>
-            <a href="#">Services</a>
-          </li>
-          <li>
-            <a href="#">Contact</a>
-          </li>
+
         </ul>
       </div>
     </div>
-    <div class="col">
+    <div class="col-auto context-menu">
+      <div class="row flex-row-reverse">
+        <div class="col-6 text-right">
+          <div class="my-select">
+            <select [(ngModel)]="currentTheme">
+              <option value="fairexchange">fairexchange</option>
+              <option value="taj88">taj88</option>
+              <option value="satport">satport</option>
+              <option value="bodog">bodog</option>
+            </select>
+          </div>
+        </div>
+      </div>
       <router-outlet></router-outlet>
     </div>
   </div>

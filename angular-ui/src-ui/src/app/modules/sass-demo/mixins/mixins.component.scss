@@ -1,0 +1,22 @@
+@mixin eclipse_text($color){
+  color: $color;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  @if $color == blue {
+    text-decoration: underline;
+  } @else {
+    font-weight: bold;
+  }
+  @content
+}
+
+.p1 {
+  @include eclipse_text(blue);
+}
+
+.p2 {
+  @include eclipse_text(gray){
+    font-size: 20px;
+  };
+}
