@@ -21,5 +21,8 @@
     <module>codewars-first</module>
     <module>spring-boot-fisrt</module>
     <module>angular-ui</module>
+    <module>spring-boot-rcp</module>
+    <module>spring-boot-rcp-client</module>
+    <module>common</module>
   </modules>
 </project>
