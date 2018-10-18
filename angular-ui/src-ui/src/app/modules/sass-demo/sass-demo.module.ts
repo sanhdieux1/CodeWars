@@ -9,6 +9,7 @@ import {MixinsComponent} from "./mixins/mixins.component";
 import {DirectivesComponent} from "./directives/directives.component";
 import {SelectionPerformanceComponent} from "./selection-performance/selection-performance.component";
 import {NgSelectModule} from "@ng-select/ng-select";
+import {FunctionsComponent} from "./functions/functions.component";
 
 @NgModule({
   imports:[
@@ -18,6 +19,6 @@ import {NgSelectModule} from "@ng-select/ng-select";
     WebsocketModule,
       NgSelectModule
   ],
-  declarations: [SassDemoComponent, VarialesComponent, MixinsComponent, DirectivesComponent, SelectionPerformanceComponent]
+  declarations: [SassDemoComponent, VarialesComponent, MixinsComponent, DirectivesComponent, SelectionPerformanceComponent, FunctionsComponent]
 })
 export class SassDemoModule{}

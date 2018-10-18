@@ -1,0 +1,17 @@
+@function column-witdh($number, $total){
+  @return percentage($number / $total);
+}
+
+@mixin generate-column(){
+  $total : 12;
+  @for $i from 1 through $total{
+    .my-col-#{$i}{
+      width: column-witdh($i, $total);
+      display: inline-block;
+      border: 1px solid #999999;
+    }
+  }
+}
+
+@include generate-column();
+

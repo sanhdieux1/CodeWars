@@ -1,5 +1,6 @@
 package com.kail;
 
 public interface AccessActivityLoggingService {
-    void logAccessActivity(AccessActivityData logdata);
+    void logAccessActivity( AccessActivityData logdata);
+    String getMessage();
 }

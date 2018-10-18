@@ -69,6 +69,11 @@ public class AccessActivityAPI implements AccessActivityLoggingService, Internal
     }
 
     @Override
+    public String getMessage() {
+        return "hello";
+    }
+
+    @Override
     public Map<String, Long> reloadFunctionNameIDMap() {
         LOGGER.log(Level.INFO, "Reloading the function map");
         synchronized (creatingFunctionLock) {
