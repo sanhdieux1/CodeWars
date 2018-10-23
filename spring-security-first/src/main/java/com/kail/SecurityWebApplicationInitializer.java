@@ -9,17 +9,15 @@ import org.springframework.security.config.annotation.authentication.configurati
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsByNameServiceWrapper;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.preauth.AbstractPreAuthenticatedProcessingFilter;
 import org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationProvider;
 
-@Configuration
 @EnableWebSecurity
 public class SecurityWebApplicationInitializer extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    CustomUserDetailsService userDetailsService;
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
@@ -27,18 +25,22 @@ public class SecurityWebApplicationInitializer extends WebSecurityConfigurerAdap
                 .authenticationProvider(preAuthenticationProvider())
                 .authorizeRequests()
                 .antMatchers("/noauthen").permitAll()
-                .antMatchers("/authen").authenticated()
-        .and().sessionManagement().
+                .antMatchers("/authen").hasRole("ADMIN")
+        .and()
+        .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.NEVER)
         ;
     }
 
-
+    @Autowired
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth
+                .inMemoryAuthentication()
+                .withUser("kail").password("1234qwer").roles("ADMIN");
+    }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.authenticationProvider(preAuthenticationProvider());
-        super.configure(auth);
-
     }
 
     @Bean
@@ -51,7 +53,12 @@ public class SecurityWebApplicationInitializer extends WebSecurityConfigurerAdap
     @Bean
     public PreAuthenticatedAuthenticationProvider preAuthenticationProvider(){
         PreAuthenticatedAuthenticationProvider preAuthenticationProvider = new PreAuthenticatedAuthenticationProvider();
-        preAuthenticationProvider.setPreAuthenticatedUserDetailsService(new UserDetailsByNameServiceWrapper(userDetailsService));
+        preAuthenticationProvider.setPreAuthenticatedUserDetailsService(new UserDetailsByNameServiceWrapper(userDetailsService()));
         return preAuthenticationProvider;
+    }
+
+    @Bean
+    public CustomUserDetailsService userDetailsService(){
+        return new CustomUserDetailsService();
     }
 }

@@ -11,11 +11,11 @@ public class CustomPreAuthenticationFilter extends AbstractPreAuthenticatedProce
 
     @Override
     protected Object getPreAuthenticatedPrincipal(HttpServletRequest httpServletRequest) {
-        return "N/A";
+        return "this is cookie";
     }
 
     @Override
     protected Object getPreAuthenticatedCredentials(HttpServletRequest httpServletRequest) {
-        return "this is cookie";
+        return "N/A";
     }
 }
