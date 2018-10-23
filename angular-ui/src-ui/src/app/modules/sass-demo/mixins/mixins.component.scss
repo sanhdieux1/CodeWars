@@ -1,3 +1,5 @@
+
+
 @mixin eclipse_text($color){
   color: $color;
   overflow: hidden;
@@ -8,7 +10,7 @@
   } @else {
     font-weight: bold;
   }
-  @content
+  @content;
 }
 
 .p1 {

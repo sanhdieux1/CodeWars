@@ -6,7 +6,7 @@
     "start": "ng serve --proxy-config ./proxy.conf.json",
     "build": "ng build",
     "test": "ng test",
-    "lint": "ng lint",
+    "build-sass": "node-sass --output-style expanded ./src/app/modules/sass-demo/sass-demo.component.scss ./sass-demo.component.css",
     "e2e": "ng e2e"
   },
   "private": true,

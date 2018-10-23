@@ -62,14 +62,23 @@ $colours-map: (
 
 
 /*-----scope-----*/
-$immutable_var: black !default;
-$global_var: red;
+$global_var: #121212 * 0.5;
+
+$res : #DE1212;
+
 .end-text{
-  //$global_var: blue;
-  $global_var: blue !global;
+
   color: $global_var;
 }
 
+
+
 hr{
   border-color: $global_var;
+}
+
+$font-size: 100% - 50%;
+
+.my-font{
+  font-size: calc(100% - 2px);
 }

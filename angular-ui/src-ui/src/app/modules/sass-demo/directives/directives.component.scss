@@ -4,6 +4,7 @@ $color : blue;
 button{
   margin-left: 10px;
 }
+
 .my-selector {
   @if $color == blue {
     text-decoration: underline;
@@ -13,19 +14,25 @@ button{
 }
 
 $buttonConfig: 'save' 150px #0069d9, 'cancel' 150px red, 'help' 100px rgb(19, 132, 150);
-@each $btn in $buttonConfig {
-  .button-#{nth($btn, 1)} {
-    width: nth($btn, 2);
-    background-color: nth($btn, 3);
-  }
-}
+$selector_name : 'mybutton';
 
-//@each $name, $size, $clr in $buttonConfig {
-//  .button-#{$name} {
-//    width: $size;
-//    background-color: $clr;
+.#{$selector_name}{
+  border: black;
+}
+//$buttonConfig: ('save' 'save2') 150px #0069d9, ('cancel' 'cancel') 150px red, ('help' 'help') 100px rgb(19, 132, 150);
+//@each $btn in $buttonConfig {
+//  .button-#{nth(nth($btn, 1), 1)} {
+//    width: nth($btn, 2);
+//    background-color: nth($btn, 3);
 //  }
 //}
+
+@each $name, $size, $clr, $ac in $buttonConfig {
+  .button-#{$name} {
+    width: $size;
+    background-color: $ac;
+  }
+}
 
 @for $i from 1 to 5 {
   .button-#{$i} {
@@ -46,14 +53,21 @@ $i: 8;
 .error {
   border: 1px #f00;
   background-color: #fdd;
+  &:hover{
+    background-color: pink;
+  }
 }
 .seriousError {
-  @extend .error;
-  border-width: 3px;
+  color: red;
 }
-.left-menu .dumpError{
-  @extend .error;
+.left-menu{
+  @extend .seriousError;
 }
+div .left-menu{
+  font-size: 3rem;
+}
+
+
 /*
   .error, .seriousError{
     border: 1px #f00;

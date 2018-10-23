@@ -1,21 +1,42 @@
 @import "themes";
-
+$theme-map: ();
 @mixin themify($themes) {
   @each $theme, $map in $themes {
     .theme-#{$theme} & {
-      $theme-map: () !global;
       @each $key, $submap in $map {
         $value: map-get(map-get($themes, $theme), '#{$key}');
         $theme-map: map-merge($theme-map, ($key: $value)) !global;
       }
       @content;
-      $theme-map: null !global;
     }
   }
-  $theme-map: $theme_default !global;
+  $theme-map: $theme_default;
   @content;
 }
 
 @function themed($key) {
   @return map-get($theme-map, $key);
+}
+#a {
+  .left-menu {
+    flex-basis: 250px;
+    .sidebar-nav {
+      color: #fff;
+      @at-root .sidebar-em {
+        color: #000;
+      }
+    }
+    #sidebar-wrapper {
+      width: 250px;
+      @include themify($themes) {
+
+      }
+      background-color: themed('bg-exchange');
+      .sidebar-nav li a {
+        @include themify($themes) {
+          color: themed('text-leftmenu');
+        }
+      }
+    }
+  }
 }

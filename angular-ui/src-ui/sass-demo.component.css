@@ -1,0 +1,57 @@
+.left-menu {
+  flex-basis: 250px;
+}
+
+.left-menu .sidebar-nav {
+  color: #fff;
+}
+
+.sidebar-em .left-menu .sidebar-nav {
+  color: #000;
+}
+
+.left-menu #sidebar-wrapper {
+  width: 250px;
+  background-color: #3d60a4;
+}
+
+.theme-fairexchange .left-menu #sidebar-wrapper {
+  background-color: #3d60a4;
+}
+
+.theme-taj88 .left-menu #sidebar-wrapper {
+  background-color: #F7C300;
+}
+
+.theme-satport .left-menu #sidebar-wrapper {
+  background-color: #a74bc5;
+}
+
+.theme-bodog .left-menu #sidebar-wrapper {
+  background-color: #fff;
+}
+
+.left-menu #sidebar-wrapper .sidebar-nav li a {
+  color: #fff;
+}
+
+.theme-fairexchange .left-menu #sidebar-wrapper .sidebar-nav li a {
+  color: #fff;
+}
+
+.theme-taj88 .left-menu #sidebar-wrapper .sidebar-nav li a {
+  color: #fff;
+}
+
+.theme-satport .left-menu #sidebar-wrapper .sidebar-nav li a {
+  color: #fff;
+}
+
+.theme-bodog .left-menu #sidebar-wrapper .sidebar-nav li a {
+  color: #2489d5;
+}
+
+.context-menu {
+  flex: 1;
+  overflow: hidden;
+}
