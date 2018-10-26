@@ -15,14 +15,14 @@ import java.util.List;
 
 public class AES256Encryption {
     private static final List LENGTH_VALIDATE = Arrays.asList(16,24,32);
-    private static final byte[] IV = new byte[16];
+    private static final byte[] IV = new byte[16]; //empty padding
 
     private char a = 0xFFFF;
     private int b = 0xFfffffff;
     private int c = Integer.MAX_VALUE;
     public AES256Encryption() {
     }
-    public static String encrypt(String data, String key) {
+    public static byte[] encrypt(String data, String key) {
         checkKey(key);
         try {
             AESEngine aesEngine = new AESEngine();
@@ -32,20 +32,22 @@ public class AES256Encryption {
             ParametersWithIV keyParamWithIV = new ParametersWithIV(keyParam, IV, 0, 16);
             cipher.init(true, keyParamWithIV);
             byte[] inputBytes = getBytes(data);
-            int inputLength = inputBytes.length;
 
-            byte[] output = new byte[cipher.getOutputSize(inputLength)];
-            int length = cipher.processBytes(inputBytes, 0, inputLength, output, 0);
-
+            byte[] output = new byte[cipher.getOutputSize(inputBytes.length)];
+            int length = cipher.processBytes(inputBytes, 0, inputBytes.length, output, 0);
             cipher.doFinal(output, length);
 
-            return Base64.getEncoder().encodeToString(output);
+            return output;
         } catch (DataLengthException | IllegalStateException | InvalidCipherTextException ex) {
             throw new RuntimeException("Cannot encrypt: " + data + " with key: " + key, ex);
         }
     }
-    
-    public static String decrypt(String data, String key) {
+
+    public static String encryptToString(String data, String key){
+        return Base64.getEncoder().encodeToString(encrypt(data, key));
+    }
+
+    public static byte[] decrypt(byte[] inputBytes, String key) {
         checkKey(key);
         try {
             AESEngine aesEngine = new AESEngine();
@@ -54,23 +56,30 @@ public class AES256Encryption {
             KeyParameter keyParam = new KeyParameter(getBytes(key));
             ParametersWithIV keyParamWithIV = new ParametersWithIV(keyParam, IV, 0, 16);
             cipher.init(false, keyParamWithIV);
-            byte[] inputBytes = Base64.getDecoder().decode(data);
-            int inputLength = inputBytes.length;
 
-            byte[] output = new byte[cipher.getOutputSize(inputLength)];
-            int length = cipher.processBytes(inputBytes, 0, inputLength, output, 0);
+            byte[] output = new byte[cipher.getOutputSize(inputBytes.length)];
+            int length = cipher.processBytes(inputBytes, 0, inputBytes.length, output, 0);
 
             cipher.doFinal(output, length);
 
-            return new String(output, StandardCharsets.UTF_8).trim();
+            return output;
         } catch (DataLengthException | IllegalStateException | InvalidCipherTextException ex) {
             ex.printStackTrace();
-            throw new RuntimeException("Cannot decrypt: " + data + " with key: " + key, ex);
+            throw new RuntimeException("Cannot decrypt: " + inputBytes + " with key: " + key, ex);
         }
     }
-    
+    public static String decryptToString(String data, String key){
+        byte[] inputBytes = Base64.getDecoder().decode(data);
+        return new String(decrypt(inputBytes, key), StandardCharsets.UTF_8).trim();
+    }
+
     private static byte[] getBytes(String data) {
         return data.getBytes(StandardCharsets.UTF_8);
+    }
+
+    private static String toHexString(byte[] bytes) {
+        return javax.xml.bind.DatatypeConverter.printHexBinary(bytes);
+//        return Base64.getEncoder().encodeToString(bytes);
     }
 
     private static void checkKey(String key) {
