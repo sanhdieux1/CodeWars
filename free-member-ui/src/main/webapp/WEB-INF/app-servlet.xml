@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (c) 2014. Paltech, Inc.  All Rights Reserved.
+This software is the proprietary information of Paltech.
+-->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans     http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context   http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc       http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+    
+    <context:annotation-config/>
+    <mvc:annotation-driven />
+
+
+    <context:component-scan base-package="com.merito.dao"/>
+    <context:component-scan base-package="com.merito.common.service"/>
+
+    <context:component-scan base-package="com.merito.wl.api"/>
+    <context:component-scan base-package="com.merito.freememberui" />
+
+    <mvc:interceptors>
+        <bean class="com.merito.freememberui.DomainCheckInterceptor"/>
+    </mvc:interceptors>
+
+    <bean id="templateResolver" class="org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver">
+        <property name="prefix" value="/WEB-INF/resources/"/>
+        <property name="suffix" value=".html"/>
+        <property name="templateMode" value="HTML"/>
+        <property name="cacheable" value="true"/>
+    </bean>
+
+    <bean id="templateEngine"
+                class="org.thymeleaf.spring5.SpringTemplateEngine">
+        <property name="templateResolver" ref="templateResolver"/>
+        <property name="enableSpringELCompiler" value="true"/>
+    </bean>
+    <bean class="org.thymeleaf.spring5.view.ThymeleafViewResolver">
+        <property name="templateEngine" ref="templateEngine" />
+    </bean>
+
+    <mvc:resources mapping="/**" location="/WEB-INF/resources/"/>
+</beans>

@@ -1,0 +1,22 @@
+<div class="container-event-info">
+    <div>
+        <div *ngIf="eventHighlights && eventHighlights.length > 0" class="col-sm-12">
+            <div *ngFor="let event of eventHighlights;" class="row highlight-container d-flex align-items-center" [routerLink]="event.link">
+                <div class="event-name-content">
+                        <div class="event-name">{{getEventName(event)}}</div>
+                        <div class="start-time">
+                            <span *ngIf="!event?.inplay">{{friendlyTime(event.openDate)}}</span>
+                            <span *ngIf="event?.inplay" class="inplay-text">In-Play</span>
+                        </div>
+
+                </div>
+                <div class="arrow"><i class="fas fa-angle-right"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12" *ngIf="isLoaded && (!eventHighlights || eventHighlights.length == 0)">
+            <div class="text-center">There are no markets available!</div>
+        </div>
+    </div>
+</div>
+

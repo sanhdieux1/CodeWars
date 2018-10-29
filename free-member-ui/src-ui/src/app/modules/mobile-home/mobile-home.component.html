@@ -1,0 +1,20 @@
+<div *ngIf="listSport && listSport.length >0" class="highlight-content">
+    <div>
+        <div class="highlight-page">
+            <div id="sport-highlight" class="sport-highlight">
+                <div class="sport-highlight-content">
+                    <h2 class="header">Sport Highlights</h2>
+                    <div>
+                        <tabset [justified]="true">
+                            <tab *ngFor="let sport of listSport" heading="{{sport.sportName}}"
+                                 (select)="callClick(sport.sportId)"
+                            [active]="sport.sportId == selectedSport">
+                            </tab>
+                        </tabset>
+                        <app-sport-highlight [sportId]="selectedSport"></app-sport-highlight>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

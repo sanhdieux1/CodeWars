@@ -1,0 +1,132 @@
+span, div{
+  font-size: 12px;
+  white-space: nowrap;
+}
+.event-name-content, .odds-content{
+  display: inline-block;
+}
+.odds-content {
+  padding-left: 50px;
+  padding-right: 33px;
+  position: relative;
+  .btn-rules {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    background: #dee7e6;
+    border: none;
+    padding: 0;
+    text-align: center;
+    line-height: 0;
+    border-radius: 3px;
+    i {
+      font-size: 10px;
+      color: #333;
+    }
+  }
+
+  .group-live {
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    width: 45px;
+    height: auto;
+    text-align: right;
+    .btn {
+      width: 20px;
+      height: auto;
+      background: none;
+      border: none;
+      padding: 0;
+      text-align: center;
+      border-radius: 0;
+      &:focus {
+        box-shadow: none;
+      }
+    }
+    span {
+      font-size: 14px;
+      &.icon-tv2 {
+        font-size: 16px;
+        display: inline-block;
+        margin-top: -4px;
+      }
+    }
+  }
+}
+
+.event-name-content{
+  float: left;
+}
+.odds-content{
+  float:right;
+}
+.event-row{
+    padding-right: 2px;
+    padding-left: 2px;
+}
+
+.event-name{
+  color: #2789ce;
+  font-weight: bold;
+  font-family:Roboto Slab;
+  padding-left: 4px;
+}
+
+.inplay-icon{
+  color: gray;
+  font-size: 14px;
+  padding-left: 7px;
+  &.inplay{
+    color: #99D804;
+  }
+}
+.app-odds-container{
+  position: relative;
+}
+.suspended{
+  top: 0;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  border: solid 2px #b30000;
+  background: #fff;
+  opacity: 0.6;
+  font-family:"Roboto Slab";
+  &::after{
+    color: #b30000;
+    content: 'Suspended';
+
+  }
+}
+
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .event-name-content {
+    .event-name {
+      color: #1e1e1e;
+      height: 46px;
+      line-height: 36px;
+      font-size: 14px;
+    }
+
+  }
+
+  .odds-content {
+    padding-right: 0;
+    .btn-rules {
+      display: none;
+    }
+  }
+
+}

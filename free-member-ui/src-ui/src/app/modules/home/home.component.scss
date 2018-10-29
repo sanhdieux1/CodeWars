@@ -1,0 +1,86 @@
+.sport-block {
+  .event-ele {
+    border-top: 1px solid #e0e6e6;
+    &:nth-last-child(1){
+      border-bottom: 1px solid #e0e6e6;
+    }
+  }
+}
+
+div {
+  background-color: #fff;
+}
+
+.sport-name {
+  font-family: Roboto Slab;
+  font-size: 12px;
+  color: #fff;
+  font-weight: bold;
+  width: 110px;
+  min-height: 25px;
+  background-color: #000000;
+  margin-left: 2px;
+  margin-top: 2px;
+}
+
+.runner {
+  width: 82px;
+  display: inline-block;
+  text-align: center;
+}
+
+.runner-names-heading {
+  float: right;
+  padding-right: 30px;
+}
+.header {
+  background-color: #404040;
+  color: #fff;
+  padding: 7px 8px;
+  font-weight: bold;
+  margin-bottom: 0;
+  height: 36px;
+  font-size: 15px;
+}
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .pb-4 {
+    padding-bottom: 0 !important;
+  }
+  .sport-block {
+    .event-ele {
+      border-top: 1px solid #eaeaea;
+      padding: 6px 8px;
+      &:nth-last-child(1) {
+        border-bottom: 0;
+      }
+    }
+    .clearfix + .event-ele {
+      border-top: 0;
+    }
+  }
+
+  .runner {
+    font-size: 13px;
+    font-weight: 700;
+    color: #4d4d4d;
+  }
+  .runner-names-heading {
+    margin-top: 6px;
+    padding-right: 10px;
+  }
+  .sport-name {
+    width: 100%;
+    font-size: 14px;
+    min-height: 30px;
+    &.justify-content-center {
+      justify-content: left !important;
+      padding: 0 20px;
+    }
+  }
+}
+
+@media screen and    (max-width: 310px){
+  .runner{
+      width: 52px;
+  }
+}

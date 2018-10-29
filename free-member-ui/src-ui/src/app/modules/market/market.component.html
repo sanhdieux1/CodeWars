@@ -1,0 +1,63 @@
+<div class="market-content">
+    <div>
+        <div *ngIf="market && market.listRunner && market.listRunner.length > 0" class="highlight-page">
+            <div class="market-body">
+                <div class="back"(click)="goBack(sportId)">
+                    <i class="fas fa-chevron-left"></i>
+                </div>
+                <div class="sport-highlight-content">
+                    <div class="header">
+                        <div class="event-name">{{market.eventName}}</div>
+                        <div class="start-time">
+                            <span *ngIf="!market?.inplay">{{friendlyTime(market?.openDate)}}</span>
+                            <span *ngIf="market?.inplay" class="inplay-text">In-Play</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="market-container">
+                    <table class="market-detail table table-collapse table-odds">
+                        <thead>
+                        <tr>
+                            <th class="runner-info">
+                            </th>
+                            <th class="odds header-odds">Back</th>
+                            <th class="odds header-odds">Lay</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let runner of market.listRunner; trackBy: trackByIndex">
+                            <td class="p-0 text-left align-middle pl-1 runner-info">
+                                <div class="runner-name">
+                                    {{runner.runnerName}}
+                                </div>
+
+                            </td>
+                            <td class="odds cell-odds disable-odds">
+                                <div class="pending-odds cell-back" [appHighlight]="runner.ex.availableToBack[0]?.price || 0">
+                                    <div class="price">{{runner.ex.availableToBack[0]?.price || ''}}</div>
+                                    <!--<div class="size ellipsis-text">{{runner.ex.availableToBack[0].size}}</div>-->
+                                </div>
+                            </td>
+                            <td class="odds cell-odds disable-odds">
+                                <div class="pending-odds cell-lay"[appHighlight]="runner.ex.availableToLay[0]?.price || 0">
+                                    <div class="price">{{runner.ex.availableToLay[0]?.price || ''}}</div>
+                                    <!--<div class="size ellipsis-text">{{runner.ex.availableToLay[0].size}}</div>-->
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div *ngIf="market.status === 'SUSPENDED'" class="suspended d-flex align-items-center justify-content-center"></div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="isLoaded && (!market || !market.listRunner || market.listRunner.length == 0)" class="highlight-page">
+            <div class="market-body" (click)="goBack(sportId)">
+                <div class="back">
+                    <i class="fas fa-chevron-left"></i>
+                </div>
+            </div>
+            <div class="text-center">There are no markets available!</div>
+        </div>
+    </div>
+</div>
