@@ -15,7 +15,6 @@ public class CustomUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         System.out.println(s);
         Set<GrantedAuthority> authorities = new HashSet<>();
-        authorities.add(new SimpleGrantedAuthority("ROLE_" + "ADMIN"));
         return new User("n/a", "n/a", authorities);
     }
 }

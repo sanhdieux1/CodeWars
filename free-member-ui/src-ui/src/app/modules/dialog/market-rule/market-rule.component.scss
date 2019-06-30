@@ -1,0 +1,32 @@
+.modal-header {
+  background-color: #dfdfdf;
+  padding: 5px 20px;
+  border-radius: unset;
+  font-weight: bold;
+  font: bold 18px "Helvetica Neue",sans-serif;
+}
+
+.close {
+  font-size: 15px;
+  padding: 20px 5px 5px 5px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.market-rule-content {
+  font-size: 11px;
+}
+
+.market-rule-content br {
+  height: auto;
+  line-height: normal;
+}
+
+.market-rule-content .modal-body-fit-with-content p,
+.market-rule-content .modal-body-fit-with-content h4,
+.market-rule-content ul {
+  margin-bottom: 0px;
+}
+

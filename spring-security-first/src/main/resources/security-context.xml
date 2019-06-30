@@ -1,0 +1,41 @@
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:context="http://www.springframework.org/schema/context"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/security
+            http://www.springframework.org/schema/security/spring-security.xsd
+            http://www.springframework.org/schema/context
+            http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <http pattern="/css/**" security="none"/>
+    <http entry-point-ref="http403EntryPoint" use-expressions="true" auto-config="false" disable-url-rewriting="true" create-session="never">
+        <csrf disabled="true"/>
+        <access-denied-handler error-page="/accessdenied" />
+        <intercept-url pattern="/**" access="hasAnyRole('ROLE_PARTNER', 'ROLE_SUB_PARTNER')" requires-channel="any"/>
+        <!--<logout logout-url="/logout" invalidate-session="true"/>-->
+        <custom-filter position="PRE_AUTH_FILTER" ref="cookeiPreAuthenticationFilter" />
+    </http>
+
+
+
+    <authentication-manager alias="authenticationManager">
+        <authentication-provider ref="preAuthenticationProvider" />
+    </authentication-manager>
+
+    <beans:bean id="cookeiPreAuthenticationFilter" class="com.kail.CustomPreAuthenticationFilter">
+        <beans:property name="authenticationManager" ref="authenticationManager" />
+    </beans:bean>
+
+    <beans:bean id="customUserDetailsService" class="com.kail.service.CustomUserDetailsService" />
+    <beans:bean id="http403EntryPoint" class="org.springframework.security.web.authentication.Http403ForbiddenEntryPoint" />
+
+    <beans:bean id="preAuthenticationProvider" class="org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationProvider">
+        <beans:property name="preAuthenticatedUserDetailsService">
+            <beans:bean id="userDetailsServiceWrapper" class="org.springframework.security.core.userdetails.UserDetailsByNameServiceWrapper">
+                <beans:property name="userDetailsService" ref="customUserDetailsService" />
+            </beans:bean>
+        </beans:property>
+    </beans:bean>
+</beans:beans>

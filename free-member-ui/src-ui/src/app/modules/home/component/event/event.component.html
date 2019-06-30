@@ -1,0 +1,31 @@
+<div >
+    <div class="event-row clearfix">
+        <div class="event-name-content">
+            <span class="inplay-icon" [ngClass]="{'inplay':_event?.inplay}"><i class="fas fa-check-square"></i>&nbsp;</span>
+            <span class="event-name">{{eventName}}&nbsp;</span>
+            <span *ngIf="!_event?.inplay">{{appService.friendlyTime(_event?.openDate)}}</span>
+            <span *ngIf="_event?.inplay" class="inplay-text">In-Play</span>
+        </div>
+        <div class="odds-content">
+            <div class="group-live">
+                <div *ngIf="_event.liveTV" class="d-inline-block live-streaming">
+                    <button type="button" class="btn btn-tv">
+                        <span class="icon-tv"></span>
+                    </button>
+                </div>
+                <div *ngIf="_event.liveStreaming" class="d-inline-block live-tv">
+                    <button type="button" class="btn btn-tv">
+                        <span class="icon-tv2"></span>
+                    </button>
+                </div>
+            </div>
+            <div class="app-odds-container">
+                <app-odds [runnerList]="_event.listRunner" [maxRunner]="maxRunner"></app-odds>
+                <div class="suspended d-flex align-items-center justify-content-center" *ngIf="_event?.status === 'SUSPENDED'"></div>
+            </div>
+            <button type="button" class="btn btn-primary btn-rules" (click)="clickRule(_event.marketId)">
+                <i class="fas fa-info"></i>
+            </button>
+        </div>
+    </div>
+</div>

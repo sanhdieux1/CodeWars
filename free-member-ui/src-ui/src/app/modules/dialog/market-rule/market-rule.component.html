@@ -1,0 +1,17 @@
+<div class="market-rule-content">
+    <div class="modal-header">
+        <div>{{data.marketName}} - Rules</div>
+        <span class="close" (click)="bsModalRef.hide()"><i class="fas fa-times"></i></span>
+    </div>
+    <div class="modal-body modal-body-fit-with-content">
+        <div>
+            <span class="bold">Event Start Time</span><br/>
+            <span>{{data.marketStartTime| date: 'dd MMM yyyy, HH:mm':'UTC'}} (UTC)</span><br/>
+            <span>{{data.marketStartTime| date: 'dd MMM yyyy, HH:mm':'ICT'}} (ICT)</span><br/>
+            <span class="bold">{{data.rulesDescription}}</span><br/>
+        </div>
+        <div>
+             <div [innerHTML]="data.rules"></div>
+        </div>
+    </div>
+</div>

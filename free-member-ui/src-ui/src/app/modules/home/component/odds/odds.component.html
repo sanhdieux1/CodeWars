@@ -1,0 +1,8 @@
+<div class="d-flex flex-nowrap">
+    <div class="d-flex flex-row" *ngFor="let runner of _runnerList; trackBy: trackByIndex; let i = index;" [ngClass]="{'order-1': i == 0, 'order-3': i == 1,'order-2': i == 2}">
+        <div *ngIf="!!runner.ex" class="odd-box back disable-odds" [appHighlight]="runner.ex.availableToBack[0] ? runner.ex.availableToBack[0]?.price : 0">{{runner.ex.availableToBack[0]? runner.ex.availableToBack[0].price : ''}}</div>
+        <div *ngIf="!!runner.ex" class="odd-box lay disable-odds" [appHighlight]="runner.ex.availableToBack[0] ? runner.ex.availableToBack[0].price : 0">{{runner.ex.availableToLay[0] ? runner.ex.availableToLay[0].price : ''}}</div>
+        <div *ngIf="!runner.ex" class="odd-box back disable-odds">-</div>
+        <div *ngIf="!runner.ex" class="odd-box lay disable-odds">-</div>
+    </div>
+</div>

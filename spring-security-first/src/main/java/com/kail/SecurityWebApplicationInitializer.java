@@ -12,6 +12,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsByNameServiceWrapper;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.web.authentication.Http403ForbiddenEntryPoint;
 import org.springframework.security.web.authentication.preauth.AbstractPreAuthenticatedProcessingFilter;
 import org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationProvider;
 
@@ -22,12 +23,13 @@ public class SecurityWebApplicationInitializer extends WebSecurityConfigurerAdap
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .addFilterBefore(getFilter(), AbstractPreAuthenticatedProcessingFilter.class)
-                .authenticationProvider(preAuthenticationProvider())
+                    .authenticationProvider(preAuthenticationProvider())
                 .authorizeRequests()
-                .antMatchers("/noauthen").permitAll()
-                .antMatchers("/authen").hasRole("ADMIN")
-        .and()
-        .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.NEVER)
+                    .antMatchers("/noauthen").permitAll()
+                    .antMatchers("/authen").hasRole("ADMIN").and()
+                .csrf().disable()//disabled, ssid/password as properties name.
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.NEVER).and()
+                .httpBasic().authenticationEntryPoint(forbidden())
         ;
     }
 
@@ -60,5 +62,10 @@ public class SecurityWebApplicationInitializer extends WebSecurityConfigurerAdap
     @Bean
     public CustomUserDetailsService userDetailsService(){
         return new CustomUserDetailsService();
+    }
+
+    @Bean
+    public Http403ForbiddenEntryPoint forbidden(){
+        return new Http403ForbiddenEntryPoint();
     }
 }

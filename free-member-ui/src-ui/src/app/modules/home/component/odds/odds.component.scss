@@ -1,0 +1,42 @@
+.odd-box{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 25px;
+  width: 40px;
+  background-color: #72bbef;
+  font: 11px Tahoma;
+  font-weight: bold;
+  color:#273a47;
+  &.lay{
+    background-color: #f994a9;
+  }
+  &.change {
+    -webkit-animation: flash .7s;
+    animation: flash .7s
+  }
+  margin-left: 1px;
+  &.disable-odds {
+    pointer-events: none;
+    opacity: 0.6;
+  }
+}
+
+@-webkit-keyframes flash {
+  10% {
+    background-color: #ff0
+  }
+}
+
+@keyframes flash {
+  10% {
+    background-color: #ff0
+  }
+}
+
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .odd-box {
+    min-height: 36px;
+    border-radius: 4px;
+  }
+}

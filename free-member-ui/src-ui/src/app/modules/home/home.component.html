@@ -1,0 +1,20 @@
+<div *ngIf="sportList && sportList.length >0">
+    <h2 class="header">Sport Highlights</h2>
+    <div *ngFor="let sport of sportList ; trackBy: trackByIndex" class="pb-4">
+        <div class="sport-name d-flex justify-content-center align-items-center">
+            {{sport.sportName}}
+        </div>
+        <div class="sport-block">
+            <div class="clearfix">
+                <div class="runner-names-heading">
+                    <span class="runner runner-0">1</span>
+                    <span *ngIf="getMaxRunner(sport.events) >= 3" class="runner runner-1">X</span>
+                    <span class="runner runner-2">2</span>
+                </div>
+            </div>
+            <div class="event-ele" *ngFor="let event of sport.events; trackBy: trackByIndex">
+                <app-event [event]="event" [maxRunner]="getMaxRunner(sport.events)"></app-event>
+            </div>
+        </div>
+    </div>
+</div>
