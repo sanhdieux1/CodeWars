@@ -1,0 +1,1 @@
+DO $do$ BEGIN IF NOT EXISTS(select 1 from information_schema.tables WHERE table_schema = 'public' AND table_name = 'table_by_script') THEN create table table_by_script(id bigserial not null, data varchar(255), primary key (id)); insert into table_by_script(data) values ('this is data'); END IF;END $do$
