@@ -7,11 +7,11 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.util.List;
 
-@Stateless
+
 public class BaseDAO {
 
     @Inject
-    private CustomerManager em;
+    protected CustomerManager em;
 
     public <T> List<T> getAll(Class<T> entityClass){
         CriteriaBuilder cb = em.getEm().getCriteriaBuilder();

@@ -10,10 +10,10 @@
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
 
-            <property name="javax.persistence.schema-generation.database.action" value="none"/>
+            <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
             <!-- values: none, create, drop-and-create, drop-->
             <!--Create-->
-            <property name="javax.persistence.schema-generation.create-source" value="metadata"/>
+            <property name="javax.persistence.schema-generation.create-source" value="metadata-then-script"/>
             <property name="javax.persistence.sql-load-script-source" value="META-INF/sql/create-company.sql" />
             <!--Drop-->
             <property name="javax.persistence.schema-generation.drop-source" value="metadata" />
