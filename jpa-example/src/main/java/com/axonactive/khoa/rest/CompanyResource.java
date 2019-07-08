@@ -6,16 +6,24 @@ import com.axonactive.khoa.model.Company;
 import com.axonactive.khoa.utils.CopyUtil;
 
 import javax.inject.Inject;
-import javax.transaction.Transactional;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
-@Path("/company")
+@Path("/companies")
 public class CompanyResource {
     @Inject
     private CompanyDAO companyDAO;
+    
+    @GET
+    public List<Company> findAll(){
+        List<Company> emps = companyDAO.getAll(CompanyEntity.class).stream()
+                .map(com -> CopyUtil.copy(com, Company.class))
+                .collect(Collectors.toList());
+        return emps;
+    }
 
     @GET
     @Path("/no-employee")

@@ -1,6 +1,5 @@
 package com.axonactive.khoa.rest;
 
-import com.axonactive.khoa.dao.BaseDAO;
 import com.axonactive.khoa.dao.PersonDAO;
 import com.axonactive.khoa.entity.PersonEntity;
 import com.axonactive.khoa.model.Person;
@@ -13,7 +12,7 @@ import javax.ws.rs.Path;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Path("/person")
+@Path("/persons")
 public class PersonResource {
     @Inject
     private PersonDAO baseDAO;

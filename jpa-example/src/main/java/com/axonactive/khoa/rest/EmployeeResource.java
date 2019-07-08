@@ -11,7 +11,7 @@ import javax.ws.rs.QueryParam;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Path("/employee")
+@Path("/employees")
 public class EmployeeResource {
 
     @Inject
