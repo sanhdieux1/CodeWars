@@ -3,10 +3,15 @@ package com.kail;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.LongStream;
 import java.util.stream.Stream;
 
 public class AppTest2 {
@@ -38,4 +43,11 @@ public class AppTest2 {
         //return BCNN
         return a*b/t;
     }
+    
+    
+    public static String removeSpace(String input){
+        return input.replaceAll("\\p{Space}", "");
+    }
+    
+    
 }
