@@ -26,5 +26,6 @@
     <module>common</module>
       <module>encryption</module>
       <module>spring-security-first</module>
+      <module>file-name</module>
   </modules>
 </project>

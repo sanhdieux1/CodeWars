@@ -1,22 +1,19 @@
 package com.kail.detect_de_quy;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.Singular;
 import lombok.experimental.Delegate;
 import org.junit.Test;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import static org.junit.Assert.assertFalse;
 
 public class Main {
     @Test
     public void test() {
-        List<String> input = Arrays.asList("1-2", "2-3", "2-4", "1-5", "5-2", "5-6");
+        List<String> input = Arrays.asList("1-2", "2-3", "2-4", "1-5", "5-2", "5-1");
         Map<String, Node> nodes = new HashMap<>();
         input.stream()
                 .map(s -> s.split("-"))
@@ -27,7 +24,7 @@ public class Main {
                                     return i;
                                 })
                                 .orElse(Node.builder().root(key)
-                                        .childs(new ArrayList<>(Arrays.asList(pair[1])))
+                                        .childs(new ArrayList<>(Collections.singletonList(pair[1])))
                                         .build())
                 ));
         Detetor detetor = Detetor.builder().allNodes(nodes).build();
@@ -41,7 +38,7 @@ public class Main {
     public static class Detetor {
         Map<String, Node> allNodes;
         String nodeError;
-        public boolean isRecursive() {
+        boolean isRecursive() {
             AtomicBoolean isRecursive = new AtomicBoolean(false);
             allNodes.values().forEach(node -> {
                 List<String> childs = node.getChilds();
@@ -53,7 +50,7 @@ public class Main {
                 boolean recursive = childs.stream()
                         .anyMatch(nodeChild -> getChilds(nodeChild).contains(node.getRoot()));
                 if(!recursive) {
-                    recursive = isChild(childs, node.getRoot());
+                    recursive = isChild2(childs, node.getRoot());
                 } else {
                     nodeError = node.getRoot();
                 }
@@ -77,6 +74,20 @@ public class Main {
                 }
             }
             return isChild;
+        }
+
+        boolean isChild2(List<String> childs, String root) {
+            LinkedList<String> pool = new LinkedList<>(childs);
+            while (!pool.isEmpty()) {
+                String child = pool.pop();
+                List<String> childsOfChild = getChilds(child);
+                if (childsOfChild.contains(root)) {
+                    return true;
+                } else {
+                    pool.addAll(0, childsOfChild);
+                }
+            }
+            return false;
         }
 
         List<String> getChilds(String key) {
