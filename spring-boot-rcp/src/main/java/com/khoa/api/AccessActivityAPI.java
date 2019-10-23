@@ -8,6 +8,8 @@ import com.kail.AccessActivityData;
 import com.kail.AccessActivityLoggingService;
 import com.khoa.utility.AccessActivityThreadFactory;
 import org.springframework.dao.DuplicateKeyException;
+import org.springframework.http.MediaType;
+import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;

@@ -1,8 +1,10 @@
 package com.kail;
 
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -18,9 +20,7 @@ public class AppTest2 {
 
     @Test
     public void testNumericals(){
-
-        System.out.println(convertFracs(new long[][] { {1, 2}, {1, 3}, {1, 4} }));
-        System.out.println(convertFracs(new long[][] {}));
+        System.out.println(MyEnum.ABC.toString());
     }
 
     public static String convertFracs(long[][] lst){
@@ -44,10 +44,32 @@ public class AppTest2 {
         return a*b/t;
     }
     
+    @Test
+    public void characterToBit(){
+        String str = "···· · −·−− ·−−− ··− −·· ·";
+        byte[] bytes = str.getBytes(Charset.forName("UTF-8"));
+        for(byte b : bytes) {
+            System.out.print(" " + Integer.toBinaryString(b & 0xFF));
+        }
+    }
     
     public static String removeSpace(String input){
         return input.replaceAll("\\p{Space}", "");
     }
     
+    public enum MyEnum{
+        ABC
+    }
     
+    @Test
+    public void testRegex(){
+
+        String input = "SELECT  TOP " + "abc" + " DD1RA FROM ARG0CPP WITH   \n  " +
+                "  (READUNCOMMITTED) WHERE DDR68A= :status   WITH (READUNCOMMITTED)";
+        String output = input.replaceAll("WITH\\s+\\Q(READUNCOMMITTED)\\E", "");
+        if (!output.isEmpty()) {
+            System.out.println(output);
+        }
+        System.out.println("Finish");
+    }
 }

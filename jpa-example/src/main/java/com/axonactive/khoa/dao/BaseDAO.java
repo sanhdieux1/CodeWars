@@ -1,12 +1,14 @@
 package com.axonactive.khoa.dao;
 
 import org.apache.commons.lang3.StringUtils;
+import org.hibernate.Session;
 
 import javax.inject.Inject;
 import javax.persistence.EntityGraph;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
 

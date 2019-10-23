@@ -25,22 +25,22 @@ public class CompanyResource {
         return emps;
     }
 
-    @GET
-    @Path("/no-employee")
-    public List<Company> findCompaniesHaveNoEmployee(){
-        List<Company> emps = companyDAO.findCompaniesHaveNoEmployee().stream()
-                .map(com -> CopyUtil.copy(com, Company.class))
-                .collect(Collectors.toList());
-        return emps;
-    }
-
 //    @GET
 //    @Path("/no-employee")
-//    public List<Company> findCompaniesHaveNoEmployee() {
-//        List<CompanyEntity> rs = companyDAO.findCompaniesHaveNoEmployee_solution();
-//        List<Company> emps = rs.stream()
+//    public List<Company> findCompaniesHaveNoEmployee(){
+//        List<Company> emps = companyDAO.findCompaniesHaveNoEmployee().stream()
 //                .map(com -> CopyUtil.copy(com, Company.class))
 //                .collect(Collectors.toList());
 //        return emps;
 //    }
+
+    @GET
+    @Path("/no-employee")
+    public List<Company> findCompaniesHaveNoEmployee() {
+        List<CompanyEntity> rs = companyDAO.findCompaniesHaveNoEmployee_solution();
+        List<Company> emps = rs.stream()
+                .map(com -> CopyUtil.copy(com, Company.class))
+                .collect(Collectors.toList());
+        return emps;
+    }
 }

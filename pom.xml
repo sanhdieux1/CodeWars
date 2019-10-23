@@ -26,6 +26,8 @@
     <module>common</module>
       <module>encryption</module>
       <module>spring-security-first</module>
+      <module>jdbc-execute-sql</module>
+      <module>execute-sql</module>
       <module>file-name</module>
   </modules>
 </project>
