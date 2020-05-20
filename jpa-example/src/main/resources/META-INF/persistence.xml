@@ -9,16 +9,10 @@
         <properties>
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
-
-            <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
+            <property name="hibernate.connection.isolation" value="TRANSACTION_READ_COMMITTED"/>
+            <property name="javax.persistence.lock.scope" value="EXTENDED"/>
+            <property name="javax.persistence.schema-generation.database.action" value="none"/>
             <!-- values: none, create, drop-and-create, drop-->
-            <!--Create-->
-            <property name="javax.persistence.schema-generation.create-source" value="metadata-then-script"/>
-            <property name="javax.persistence.schema-generation.create-script-source" value="META-INF/sql/create.sql" />
-            <property name="javax.persistence.sql-load-script-source" value="META-INF/sql/data.sql" />
-            <!--Drop-->
-            <property name="javax.persistence.schema-generation.drop-source" value="metadata-then-script" />
-            <property name="javax.persistence.schema-generation.drop-script-source" value="META-INF/sql/drop.sql" />
         </properties>
     </persistence-unit>
 </persistence>

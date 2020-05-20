@@ -26,6 +26,7 @@ public class BaseDAO {
         if (StringUtils.isNotEmpty(entityGraphName)) {
             return em.getEm().createQuery(cq).setHint("javax.persistence.loadgraph", getEntityGraph(entityGraphName)).getResultList();
         }
+
         return em.getEm().createQuery(cq).getResultList();
     }
     
@@ -35,6 +36,11 @@ public class BaseDAO {
     
     public <T> T persist(T instance) {
         em.getEm().persist(instance);
+        return instance;
+    }
+
+    public <T> T merge(T instance) {
+        em.getEm().merge(instance);
         return instance;
     }
     
