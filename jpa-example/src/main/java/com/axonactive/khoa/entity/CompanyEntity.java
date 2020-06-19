@@ -2,6 +2,7 @@ package com.axonactive.khoa.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.NaturalId;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -28,17 +29,17 @@ public class CompanyEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(name = "company_name")
-    private String companyName;
+    @Id
+    @Column(name = "name")
+    private String name;
 
     @Column(name = "address")
     private String address;
 
-    @OneToMany(fetch = FetchType.EAGER)
-    @JoinColumn(referencedColumnName = "company_name",
-            name = "company_name", //column name of EmployeeEntity
-            insertable = false, updatable = false, foreignKey = @ForeignKey(NO_CONSTRAINT)
-            )
-    private List<EmployeeEntity> employees;
+//    @OneToMany(fetch = FetchType.EAGER)
+//    @JoinColumn(referencedColumnName = "name",
+//            name = "company_name", //column name of EmployeeEntity
+//            insertable = false, updatable = false, foreignKey = @ForeignKey(NO_CONSTRAINT)
+//            )
+//    private List<EmployeeEntity> employees;
 }

@@ -94,6 +94,11 @@
         </dependency>
 
         <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <version>1.9.2</version>
+        </dependency>
+        <dependency>
             <groupId>com.fasterxml.jackson.datatype</groupId>
             <artifactId>jackson-datatype-jsr310</artifactId>
             <version>2.9.9</version>
@@ -123,4 +128,95 @@
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <!-- profile for generating new ddls automatically from the entities present
+              just use: mvn clean install hibernate:create -Pddl
+              Check result at: target/create.sql
+              -->
+            <id>ddl</id>
+            <properties>
+<!--                <hibernate.connection.driver_class>com.ibm.as400.access.AS400JDBCDriver</hibernate.connection.driver_class>-->
+<!--                <hibernate.dialect>org.hibernate.dialect.DB2400Dialect</hibernate.dialect>-->
+                                <hibernate.connection.driver_class>com.microsoft.sqlserver.jdbc.SQLServerDriver</hibernate.connection.driver_class>
+                                <hibernate.dialect>org.hibernate.dialect.SQLServer2012Dialect</hibernate.dialect>
+                <hibernate.connection.url>jdbc:h2:mem:test</hibernate.connection.url>
+                <hibernate.connection.username>sa</hibernate.connection.username>
+                <hibernate.connection.password></hibernate.connection.password>
+            </properties>
+            <dependencies>
+                <dependency>
+                    <groupId>org.hibernate</groupId>
+                    <artifactId>hibernate-entitymanager</artifactId>
+                </dependency>
+                <dependency>
+                    <groupId>org.hibernate</groupId>
+                    <artifactId>hibernate-java8</artifactId>
+                    <version>5.0.7.Final</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.hibernate</groupId>
+                    <artifactId>hibernate-core</artifactId>
+                </dependency>
+                <dependency>
+                    <groupId>hsqldb</groupId>
+                    <artifactId>hsqldb</artifactId>
+                    <version>1.8.0.10</version>
+                </dependency>
+                <dependency>
+                    <groupId>com.h2database</groupId>
+                    <artifactId>h2</artifactId>
+                    <version>1.4.192</version>
+                </dependency>
+                <dependency>
+                    <groupId>javax.ws.rs</groupId>
+                    <artifactId>javax.ws.rs-api</artifactId>
+                    <version>2.1.1</version>
+                </dependency>
+                <dependency>
+                    <groupId>net.sf.jt400</groupId>
+                    <artifactId>jt400</artifactId>
+                    <version>6.6</version>
+                </dependency>
+            </dependencies>
+            <build>
+                <plugins>
+<!--                    <plugin>-->
+<!--                        <artifactId>maven-antrun-plugin</artifactId>-->
+<!--                        <version>${version.antrun.plugin}</version>-->
+<!--                        <executions>-->
+<!--                            <execution>-->
+<!--                                <goals>-->
+<!--                                    <goal>run</goal>-->
+<!--                                </goals>-->
+<!--                                <phase>process-resources</phase>-->
+<!--                                <configuration>-->
+<!--                                    <tasks>-->
+<!--                                        <copy file="${basedir}/target/classes/META-INF/services/persistence-default.xml"-->
+<!--                                              toFile="${basedir}/target/classes/META-INF/persistence.xml"-->
+<!--                                              overwrite="true">-->
+<!--                                        </copy>-->
+<!--                                    </tasks>-->
+<!--                                </configuration>-->
+<!--                            </execution>-->
+<!--                        </executions>-->
+<!--                    </plugin>-->
+                    <plugin>
+                        <groupId>de.juplo</groupId>
+                        <artifactId>hibernate-maven-plugin</artifactId>
+                        <version>2.1.0</version>
+                        <configuration>
+                            <execute>false</execute>
+                            <skip>false</skip>
+                            <force>true</force>
+                            <persistenceUnit>customerPU</persistenceUnit>
+                            <username>sa</username>
+                            <password />
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>

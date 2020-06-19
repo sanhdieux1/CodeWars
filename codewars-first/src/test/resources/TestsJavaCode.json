@@ -1,0 +1,314 @@
+{
+  "AuthorizationValidatorServicesTest": [
+    "waitInitCache",
+    "testSimpleDoc",
+    "testDocumentHasSecurity",
+    "testContextualSecurityClass",
+    "testNotSecureClass",
+    "testDocumentWithCloseKeywordNotRule",
+    "testDocumentWith1CloseKeywordRuleMatch",
+    "testDocumentWith2CloseKeywordRuleMatch",
+    "testDocumentWith1CloseKeywordRuleMatch_expect_objectStoreReturn",
+    "testDocumentWith1CloseKeywordRuleNotMatch_expect_objectStoreNotReturn",
+    "testDocumentWith2CloseKeywordRule1NotMatch_expect_objectStoreNotReturn",
+    "testDocumentWith1NormalKeywordRuleMatch_expect_returnPermission",
+    "testDocumentWith1Norma2KeywordRuleMatch_expect_returnPermission",
+    "testDocumentWith1NormalKeywordRuleNotMatch_expect_objectStoreNotReturn",
+    "testDocumentWith2NormalKeywordRule1NotMatch_expect_objectStoreNotReturn",
+    "testDocumentWith1DateKeywordRuleMatch_expect_objectStoreReturn",
+    "testDocumentWith1DateKeywordRuleMatch_expect_returnPermission",
+    "testDocumentWith1NumberKeywordRuleMatch_expect_objectStoreReturn",
+    "testDocumentWith1NumberKeywordRuleMatch_expect_returnPermission",
+    "testDatabaseFolderEntrySameClassWithUser",
+    "testDatabaseFolderEntryNotSameClassWithUser",
+    "testFolderTypeFolderEntrySameClassWithUser",
+    "testFolderTypeFolderEntryNotSameClassWithUser",
+    "testFolderCodeFolderEntrySameClassWithUser",
+    "testFolderCodeFolderEntryNotSameClassWithUser",
+    "test2SameBRForFolderEntrySameClassWithUser",
+    "test2DifferentBRForFolderEntrySameClassWithUser",
+    "test2DifferentBRForFolderEntryOneSameClassWithUser",
+    "test2FolderEntrySameClassWithUser",
+    "testDocumentWithEvaluateOnShortUserId_andUserLoginIsThatKeyValue",
+    "testDocumentWithEvaluateOnShortUserId_andUserLoginIsNotThatKeyValue",
+    "testDocumentWithEvaluateOnConectedUserId_andUserIdLoginIsThatValue",
+    "testDocumentWithEvaluateOnConectedUserId_andUserIdLoginIsNotThatValue"
+  ],
+  "CommentServicesTest": [
+    "testCreateInteractive",
+    "testDeleteInteractive",
+    "testCreateBatch"
+  ],
+  "DocumentBasketServicesTest": [
+    "testDeleteInteractive"
+  ],
+  "DocumentBigFileTest": [
+    "testCreateBigFile_Binary_BatchMode",
+    "testCreateBigFile_GreaterThan80Mb_BatchMode",
+    "testCreateBigFile_PathAndFilename_BatchMode",
+    "testReplaceBigFile_Binary_BatchMode",
+    "testReplaceBigFile_PathAndFilename_BatchMode",
+    "testEmailBigFile",
+    "testDownloadBigFileGreaterThan80MB",
+    "testCreateBigFile_Binary_InteractiveMode",
+    "testCreateBigFile_PathAndFilename_InteractiveMode",
+    "testReplaceBigFile_Binary_InteractiveMode",
+    "testCreateBigDocFile_GreaterThan80Mb_BatchMode",
+    "testCopyBigFile_PathAndFilename_InteractiveMode",
+    "testReplaceBigFile_PathandFilename_InteractiveMode"
+  ],
+  "DocumentDeleteServicesTest": [
+    "testProcessDeleteDocumentsByBatchJob",
+    "testProcessDeleteDocumentsByBatchJob_oneVersionExpired",
+    "testProcessDeleteDocumentsByBatchJob_allVersionExpired",
+    "testProcessDeleteDocumentsByBatchJob_timezone"
+  ],
+  "DocumentDownloadServicesTest": [
+    "testDownloadOriginalWordDocument_expect_returnWordDocument",
+    "testDownloadPDFConversionOfWordDocument_expect_returnPDFConverDocument",
+    "testDownloadMultiDocumentAsPDFWithBigFile_expect_returnException",
+    "testDownloadMultiDocumentAsPDFWithNormalFile_expect_returnNumberOfAttachedFileInFormat",
+    "testDownloadMultiDocumentWithZipFormatWithBigFile_expect_returnNumberOfFileInFormat",
+    "testDownloadMultiDocumentWithZipFormatWithFileNotPermission_expect_returnNumberOfFileInFormatTXT"
+  ],
+  "DocumentExtensionTest": [
+    "testCreateDocument_with_supportedExtension_happycase",
+    "testCreateDocument_with_notSupportExtension",
+    "testCreateDocument_auto_detect_extension",
+    "testCreateDocument_wrong_extension_filename"
+  ],
+  "DocumentProcessServicesTest": [
+    "testCreate_InteractiveDocument",
+    "testProcessCreateDocumentBatchMode",
+    "testProcessDeleteDocumentBatchMode",
+    "testCreateInteractive",
+    "testCreateControlledVersionInteractive",
+    "testCreateWithoutDepartment_expect_exceptionMissingDepartment",
+    "testCreateWithoutEditor_expect_exceptionMissingEditor",
+    "testCreateWithoutDocType_expect_exceptionMissingDocType",
+    "testCreateWithoutKind_expect_exceptionMissingKind",
+    "testCreateWithoutReferenceStatus_expect_exceptionMissingReferenceStatus",
+    "testCreateVersionWithBaseNotExist_expect_exceptionBaseNotExist",
+    "testCreateWithoutFileBinary_expect_exceptionMissingFileBinary",
+    "testCreateWithControlVersion_expect_returnVersionId",
+    "testCreateDocumentNonPacMode_expect_returnValidDocumentId",
+    "testCreateDocumentPacMode_expect_returnValidDocumentId",
+    "testCreateControlledDocumentNonPacMode_expect_returnDocumentVersionId",
+    "testCreateFirstVersionDocumentNonPacMode_expect_returnMasterDocumentId",
+    "testCreateAndDelete_InteractiveDocument",
+    "testCreateAndDelete_DocumentVersion",
+    "testCreateAndDelete_DocumentMasterVersions",
+    "testCreateAndDelete_WarningDocument",
+    "testCreateAndDelete_VersionControlledDocument",
+    "testCreateAndDelete_ArchivedDocument",
+    "testUpdateVersion_DocumentSearch_DocumenVersion_FIRST",
+    "testUpdateVersion_DocumentSearch_DocumenVersion_LAST",
+    "testUpdateVersion_DocumentSearch_DocumenVersion_Version2",
+    "testUpdateVersion_DocumentSearch_DocumenVersion_LASTARCH",
+    "testProcessSaveDocumentBatchMode",
+    "testCreate_InteractiveDocumentWithTagContent",
+    "testDeletePDFDocByInteractiveMode_expect_notFoundData",
+    "testCreateFullPDFDoc_BatchMode",
+    "testFirstVersion_controlledVersion_interactiveMode",
+    "testFirstVersion_nonControlledVersion_interactiveMode",
+    "testSecondVersion_controlledVersion_interactiveMode",
+    "testSecondVersion_nonControlledVersion_interactiveMode",
+    "testUpdateVersion_DocumentSearch_DocumenVersion_FIRST_BatchMode",
+    "testUpdateVersion_DocumentSearch_DocumenVersion_LAST_BatchMode",
+    "testUpdateVersion_DocumentSearch_DocumenVersion_Version2_BatchMode",
+    "testUpdateVersion_DocumentSearch_DocumenVersion_LASTARCH_BatchMode"
+  ],
+  "DocumentSecurityUserNameServicesTest": [
+    "testCreateInteractive",
+    "testDeleteInteractive"
+  ],
+  "DocumentServicesTest": [
+    "testCreateInteractive",
+    "testDeleteInteractive",
+    "testCreateBatch",
+    "testCreateBatchUnitMode"
+  ],
+  "DocumentSignatureServicesTest": [
+    "testCreateDocument_Signature_StatusPublished",
+    "testCreateDocumentWithTypeDoc_Signature_StatusNone",
+    "testCreateDocument_Signature_StatusDraft",
+    "testCloneDocument_Signature_StatusValidated"
+  ],
+  "DocumentUtilsTest": [
+    "testGetDocumentInfo"
+  ],
+  "ECMExternalIndexServicesTest": [
+    "testCreateExternalIndexWithoutId_expect_exceptionMissingId",
+    "testCreateExternalIndexWithoutContent_expect_exceptionMissingContent",
+    "testCreateWithContentNotInstanceEIDocumentToProcess_expect_exceptionInvalidContent",
+    "testCreateFullInfo_expect_returnCorrectData",
+    "testUpdateProcessedItem_expect_exceptionAlreadyProcessed",
+    "testUpdateWithoutContent_expect_returnOldContent",
+    "testUpdateFullInfo_expect_returnCorrectData",
+    "testUpdateWithIdNotExist_expect_exceptionNotExisted",
+    "testCheckStatusWithIdNotExist_expect_exceptionNotExisted",
+    "testCheckStatusWithNullId_expect_exceptionMissingId",
+    "testCheckStatusWithEmptyId_expect_exceptionMissingId",
+    "testCheckStatusId_expect_returnCorrectStatus"
+  ],
+  "ECMMetaDataOperationTest": [
+    "testParseOWAMetaData",
+    "testInsertAndParseMetaDataDocx",
+    "testInsertAndParseMetaDataXlsx",
+    "testInsertAndParseMetaDataPptx",
+    "testInsertAndParseMetaDataPdf",
+    "testInsertMetadataSignedPdf",
+    "testGetMessageId"
+  ],
+  "ECMMetaDataUtilsTest": [
+    "testBuildXML",
+    "testParseECMMetaData"
+  ],
+  "EIECMProcessTest": [
+    "testSaveEIECMProcess",
+    "testLoadEIECMProcess",
+    "testUpdateByKindIdAndKeywordIndBatchModeWithTextKeyword",
+    "testUpdateByKindIdAndKeywordIndBatchModeWithDateKeyword",
+    "testUpdateByKindIdAndKeywordIndBatchModeWithNumericKeyword",
+    "testUpdateByKindIdAndKeywordIndBatchModeWithNumericKeywordHavingLeftPaddingZeros",
+    "testUpdateByKindIdAndKeywordIndBatchModeWithWrongKeywordValue",
+    "testUpdateByKindIdAndKeywordIndBatchModeWithNonUniqueDocumentSearch",
+    "testUpdateByKindIdAndKeywordIndBatchModeWithNullDocumentSearch"
+  ],
+  "EIECMProcessUtilsTest": [
+    "testMergeBaseDocWithoutContent_expect_returnContentOfDefault",
+    "testMergeBaseWithSummaryContent_expect_returnSummaryOfBaseAndListOfDefault",
+    "testMergeBaseWithMoreListContent_expect_returnContentOfBase",
+    "testMergeBaseWithLessListContent_expect_returnContentOfBase"
+  ],
+  "FolderEntryServicesTest": [
+    "testCreateInteractive",
+    "testDeleteInteractive",
+    "testCreateInteractive_WithNullFolderBusninessId"
+  ],
+  "FolderKeywordServicesTest": [
+    "testCreateFolderWithKeywordInteractiveMode_expect_returnKeywordInFolder",
+    "testUpdateFolderWithKeywordInteractiveMode_happlycase",
+    "testUpdateFolderWithKeywordBatchMode_happlycase",
+    "testDeleteFolderHasKeywordInteractiveMode_expect_notFoundData",
+    "testCreateFolderWithKeywordBatchMode_expect_returnKeywordInFolder",
+    "testDeleteFolderHasKeywordBatchMode_expect_notFoundData"
+  ],
+  "FolderProcessServicesTest": [
+    "waitInitCache",
+    "testCreateFolderValidation_MissingBusinessId",
+    "testCreateFolderValidation_BusinessIdMaxLength",
+    "testCreateFolderValidation_MissingDatabaseIdAndPacId",
+    "testCreateFolderValidation_MissingDatabaseId",
+    "testCreateFolderValidation_MissingDescription1",
+    "testCreateFolderValidation_Description1MaxLength",
+    "testCreateFolderInteractive",
+    "testCreateFolderValidation_ParentFolderMissingDatabaseId",
+    "testCreateFolderValidation_DifferentLinkTypeWithParent",
+    "testCreateFolderInteractive_WithParent"
+  ],
+  "FolderServiceTest": [
+    "testSaveFolderInteractiveMode_happycase",
+    "testUpdateFolderInteractiveMode_happycase",
+    "testDeleteFolderInteractiveMode_happycase",
+    "testTransferDocuments_validate_missingSourceFolder",
+    "testTransferDocuments_validate_missingDestinationFolder",
+    "testTransferDocuments_validate_missingFolderIdOfDestinationFolder",
+    "testTransferDocuments_validate_sourceFolderNotExist",
+    "testTransferDocuments_validate_destinationFolderNotExist",
+    "testTransferDocuments_validate_databaseIdNotMatch",
+    "testTransferDocuments_validate_folderTypeIdNotMatch",
+    "testTransferDocuments_validate_organizationIdNotMatch",
+    "testTransferDocuments_validate_pacIdNotMatch",
+    "testTransferDocuments_noDocumentInSourceFolder",
+    "testTransferDocuments",
+    "testTransferDocuments_documentInSourceAndDestinationFolder",
+    "testTransferDocuments_documentInSourceAndSomeDestinationFolders",
+    "testCreateBatch",
+    "testCreateBatchUnitMode"
+  ],
+  "FolderTypeKeywordServicesTest": [
+    "waitInitCache",
+    "testInitialFolderTypeKeyword",
+    "testCreateFolderTypeKeyword",
+    "testUpdateFolderTypeKeyword",
+    "testDeleteFolderTypeKeyword",
+    "testSaveFolderTypeKeyword_ByBom"
+  ],
+  "FolderTypeKeywordSettingTest": [
+    "testAddDataTypeOfExistedFolderTypeFromFolderTypeSetting",
+    "testUpdateDataTypeOfExistedFolderTypeFromFolderTypeSetting",
+    "testDeleteFolderTypeWhichHasKeywordsFromFolderTypeSetting",
+    "testAddNewFolderTypeContainDataTypeFromFolderTypeSetting"
+  ],
+  "GuidServicesTest": [
+    "testCreateBatchStickGUID_withPathAndFileName_Pdf",
+    "testCreateBatchStickGUID_withPathAndFileName_Pdf_BigFileSize",
+    "testCreateBatchStickGUID_withPathAndFileName_docx",
+    "testCreateBatchStickGUID_withPathAndFileName_pptx",
+    "testCreateBatchStickGUID_withPathAndFileName_xlsx",
+    "testCreateBatchStickGUID_withPathAndFileName_url",
+    "testCreateBatchSkipStickGUID_whenGUIDIsProvided",
+    "testCreateBatchStickGUID_withBinary_Pdf"
+  ],
+  "KeywordServicesTest": [
+    "testCreateInteractive",
+    "testDeleteAllInteractive",
+    "testDeleteInteractive",
+    "testDeleteAllByTypeIdInteractive"
+  ],
+  "LoadServicesTest": [
+    "testCreateLoadData",
+    "testCreateDocumentWithSecurityClassList",
+    "testCreateDocumentWithSecurityUserNameList"
+  ],
+  "ObjectKeyValueUtilsTest": [
+    "testBuildKeywordFromObjectKeyValues",
+    "testBuildKeywordFromObjectKeyValues_withNumberType"
+  ],
+  "PerformanceServicesTest": [
+    "testCreatePerformanceData"
+  ],
+  "UserAcceptanceTest": [
+    "testCreateDocuments",
+    "testUserAcceptance"
+  ],
+  "UserDevelopmentStarterTest": [
+    "testStartServerDeployDependenciesAndWait"
+  ],
+  "UserRestServiceTest": [
+    "testSearchUserWithContextHasUserWhichIsShortUserId",
+    "testSearchUserWithContextHasUserWhichIsShortUserIdInCaseCouldNotFindUser"
+  ],
+  "VisaTypeServicesTest": [
+    "testFindAllVisaTypes_expectCorrectContentForSupportedLanguages",
+    "testFindDescription_sCode_expectCorrectContentForSupportedLanguages",
+    "testCheckSupportedVisaType_sCodeInLowerCaseWithSpace_expectTrue",
+    "testCheckSupportedVisaType_sCodeInUpperCaseWithSpace_expectTrue",
+    "testCheckSupportedVisaType_bCodeInLowerCaseWithSpace_expectFalse",
+    "testCheckSupportedVisaType_bCodeInUpperCaseWithSpace_expectFalse",
+    "testCheckSupportedVisaType_bCodeInUpperCase_expectFalse",
+    "testCheckSupportedVisaType_bCodeInLowerCase_expectFalse",
+    "testCheckSupportedVisaType_emptyCode_expectFalse",
+    "testCheckSupportedVisaType_codeWithSpace_expectFalse"
+  ],
+  "XECMBatchServicesTest": [
+    "testSetup",
+    "testTearDown",
+    "testStartJobDataImportation",
+    "testStartJobPurgeJobs",
+    "testWaitJobDataImportation",
+    "testWaitJobPurgeJobs"
+  ],
+  "XECMClusterServicesTest": [
+    "testSetup",
+    "testTearDown",
+    "testIsMaster",
+    "testFindStatus"
+  ],
+  "XECMDataImportServicesTest": [
+    "testSetup",
+    "testTearDown",
+    "testRemoveProcessedBatches"
+  ]
+}

@@ -1,10 +1,11 @@
 package com.kail;
 
+import org.junit.Test;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class MyCollector
-    {
+public class MyCollector {
         List<Integer> data = new ArrayList<>();
         
         public MyCollector append(int input){
@@ -15,4 +16,13 @@ public class MyCollector
         data.add(input);
         return this;
     }
+    
+    @Test
+    public void test(){
+            Integer a = null;
+            if(Integer.valueOf(1) == a) {
+                System.out.println("true");
+            }
+    }
+    
 }
