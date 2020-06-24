@@ -1,6 +1,9 @@
 package com.axonactive.khoa.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.NaturalId;
 
@@ -24,6 +27,8 @@ import static javax.persistence.ConstraintMode.NO_CONSTRAINT;
 @Entity(name = "company")
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class CompanyEntity implements Serializable {
     
     @Id
