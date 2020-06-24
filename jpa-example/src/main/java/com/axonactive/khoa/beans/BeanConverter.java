@@ -1,6 +1,6 @@
 package com.axonactive.khoa.beans;
 
-import ch.xpertline.xecm.data.interfaces.technical.Mapping;
+import com.axonactive.khoa.beans.technical.Mapping;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -72,7 +72,7 @@ public class BeanConverter {
             for (Field targetField : targetFieldList) {
                 Mapping mapped = getMapping(targetField);
                 if (mapped != null) {
-                    ch.xpertline.xecm.data.converters.bean.FieldConverter fc = new ch.xpertline.xecm.data.converters.bean.FieldInConverter(target, source, targetField, mapped);
+                    FieldConverter fc = new FieldInConverter(target, source, targetField, mapped);
                     fc.handleProperty();
                 }
             }
@@ -92,7 +92,7 @@ public class BeanConverter {
             for (Field targetField : targetFieldList) {
                 Mapping mapped = getMapping(targetField);
                 if (mapped != null) {
-                    ch.xpertline.xecm.data.converters.bean.FieldConverter fc = new FieldOutConverter(target, source, targetField, mapped);
+                    FieldConverter fc = new FieldOutConverter(target, source, targetField, mapped);
                     fc.handleProperty();
                 }
             }

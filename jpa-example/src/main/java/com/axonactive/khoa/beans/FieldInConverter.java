@@ -1,12 +1,12 @@
 package com.axonactive.khoa.beans;
 
-import ch.xpertline.xecm.data.interfaces.technical.Mapping;
+import com.axonactive.khoa.beans.technical.Mapping;
 import org.apache.commons.lang3.StringUtils;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
 
-public class FieldInConverter extends ch.xpertline.xecm.data.converters.bean.FieldConverter {
+public class FieldInConverter extends FieldConverter {
     
     public FieldInConverter(Object target, Object source, Field mappingField, Mapping mapping) {
         super(target, source, mappingField, mapping);

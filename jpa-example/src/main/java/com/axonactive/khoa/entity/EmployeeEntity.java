@@ -22,6 +22,7 @@ import javax.persistence.JoinColumns;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import java.time.LocalDate;
@@ -44,24 +45,21 @@ public class EmployeeEntity {
     @Column(name = "department")
     private String department;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private PersonEntity person;
+//    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//    private PersonEntity person;
 
     @Column(name = "company_name")
     private String companyName;
     
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumns(value = {@JoinColumn(referencedColumnName = "name",
-            name = "company_name", //column name of EmployeeEntity
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(referencedColumnName = "company_name",
+            name = "address", //column name of EmployeeEntity
             insertable = false, updatable = false, foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT)
-    ),
-            @JoinColumn(referencedColumnName = "id",
-                    name = "id", //column name of EmployeeEntity
-                    insertable = false, updatable = false, foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT)
-            )
-    }
-    
-    ,foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
+    )
+//            @JoinColumn(referencedColumnName = "id",
+//                    name = "id", //column name of EmployeeEntity
+//                    insertable = false, updatable = false, foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT)
+//            )
     
 //    @PrimaryKeyJoinColumn(referencedColumnName = "name",
 //            name = "company_name", foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
@@ -70,5 +68,5 @@ public class EmployeeEntity {
 //            joinColumns = {@JoinColumn(name = "company_name")},
 //            inverseJoinColumns = {@JoinColumn( name = "name"), @JoinColumn( name = "address")}
 //    )
-    private CompanyEntity companyEntity;
+    private List<CompanyEntity> companyEntity;
 }

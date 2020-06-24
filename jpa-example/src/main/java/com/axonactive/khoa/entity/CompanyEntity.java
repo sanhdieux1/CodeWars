@@ -11,15 +11,15 @@ import java.util.List;
 import static javax.persistence.ConstraintMode.NO_CONSTRAINT;
 
 
-@NamedEntityGraphs(value = {
-        @NamedEntityGraph(
-                name = "graph.employees", attributeNodes = { @NamedAttributeNode("employees")}),
-        @NamedEntityGraph(
-                name = "graph.employeesIncludePerson", attributeNodes = { @NamedAttributeNode(value = "employees", subgraph = "subgragh.person")},
-                subgraphs = {
-                        @NamedSubgraph(name = "subgragh.person", attributeNodes = { @NamedAttributeNode("person")})
-                })
-})
+//@NamedEntityGraphs(value = {
+//        @NamedEntityGraph(
+//                name = "graph.employees", attributeNodes = { @NamedAttributeNode("employees")}),
+//        @NamedEntityGraph(
+//                name = "graph.employeesIncludePerson", attributeNodes = { @NamedAttributeNode(value = "employees", subgraph = "subgragh.person")},
+//                subgraphs = {
+//                        @NamedSubgraph(name = "subgragh.person", attributeNodes = { @NamedAttributeNode("person")})
+//                })
+//})
 
 @Entity(name = "company")
 @Getter
@@ -27,7 +27,7 @@ import static javax.persistence.ConstraintMode.NO_CONSTRAINT;
 public class CompanyEntity implements Serializable {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
     @Id
     @Column(name = "name")
