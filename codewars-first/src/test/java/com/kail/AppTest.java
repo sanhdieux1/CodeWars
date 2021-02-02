@@ -5,7 +5,6 @@ import org.junit.Test;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 /**
  * Unit test for simple App.
